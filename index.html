@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presidential TypeScript</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="public/images/presidential_typescript.jpeg" width="300px" />
+      </div>
+    </header>
+
+    <section class="intro">
+      <h2>Welcome to Presidential TypeScript</h2>
+      <p>
+        A resource designed to help future generations build and bot anything.
+        Follow the journey, learn, and contribute.
+      </p>
+    </section>
+
+    <!-- My Programmer History -->
+    <section class="programmer-history">
+      <h2>My Programmer History</h2>
+      <ul>
+        <li>Pascal (2004 - 11 years old)</li>
+        <li>Java</li>
+        <li>Visual Basic</li>
+        <li>JavaScript (2016 - 23 years old)</li>
+        <li>C++ (2024 - 31 years old)</li>
+      </ul>
+    </section>
+
+    <!-- Interview Invites -->
+    <section class="interview-invites">
+      <h2>Top Interview Invites</h2>
+      <div class="invite-grid">
+        <img class="interview-invite" id="interview-invite" src="public/images/1.png" alt="Interview Invite 1" />
+        <img class="interview-invite" id="interview-invite" src="public/images/2.png" alt="Interview Invite 2" />
+        <img class="interview-invite" id="interview-invite" src="public/images/3.png" alt="Interview Invite 3" />
+        <img class="interview-invite" id="interview-invite" src="public/images/4.png" alt="Interview Invite 4" />
+        <img class="interview-invite" id="interview-invite" src="public/images/5.png" alt="Interview Invite 5" />
+        <img class="interview-invite" id="interview-invite" src="public/images/6.png" alt="Interview Invite 6" />
+        <img class="interview-invite" id="interview-invite" src="public/images/7.png" alt="Interview Invite 7" />
+        <img class="interview-invite" id="interview-invite" src="public/images/8.png" alt="Interview Invite 8" />
+        <img class="interview-invite" id="interview-invite" src="public/images/9.png" alt="Interview Invite 9" />
+        <img class="interview-invite" id="interview-invite" src="public/images/10.png" alt="Interview Invite 10" />
+        <img class="interview-invite" id="interview-invite" src="public/images/11.png" alt="Interview Invite 11" />
+        <img class="interview-invite" id="interview-invite" src="public/images/12.png" alt="Interview Invite 12" />
+        <img class="interview-invite" id="interview-invite" src="public/images/13.png" alt="Interview Invite 13" />
+        <img class="interview-invite" id="interview-invite" src="public/images/14.png" alt="Interview Invite 14" />
+        <img class="interview-invite" id="interview-invite" src="public/images/15.png" alt="Interview Invite 15" />
+        <img class="interview-invite" id="interview-invite" src="public/images/16.png" alt="Interview Invite 16" />
+        <img class="interview-invite" id="interview-invite" src="public/images/17.png" alt="Interview Invite 17" />
+        <!-- Add more screenshots here -->
+      </div>
+    </section>
+
+    <!-- Patreon Donation -->
+    <section class="patreon">
+      <h2>Support the Mission</h2>
+      <p>
+        Donate after you’ve made money from what you learn. Support future
+        development.
+      </p>
+      <a
+        href="https://patreon.com/realpresjeff"
+        target="_blank"
+        class="donate-button"
+        >Support on Patreon</a
+      >
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>
+          <span>Fundamentals</span>
+            <li>
+              <a href="https://medium.com/@ashton-j-jefferson/how-to-write-jsx-with-only-vanilla-typescript-3de41666e152" target="_blank">How to write JSX with ONLY vanilla TypeScript</a>
+            </li>
+        </li>
+        <li>
+          <a href="https://medium.com/@ashton-j-jefferson/web-components-killed-react-62e2a046a73a" target="_blank"
+            >Web Components Killed React</a
+          >
+        </li>
+        <li>
+          <a href="https://medium.com/@ashton-j-jefferson/you-dont-need-express-js-5c5a05898cd8" target="_blank"
+            >You don’t need Express.js</a
+          >
+        </li>
+        <li>
+          <a href="https://medium.com/@ashton-j-jefferson/myspace-vs-react-75e892933598" target="_blank"
+            >MySpace vs React</a
+          >
+        </li>
+        <li>
+          <span>Intermediate TypeScript</span>
+        </li>
+        <li>
+          <a href="https://medium.com/towardsdev/how-to-write-react-6e43d91f4514" target="_blank"
+            >How to write React</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2024 Presidential TypeScript, by Potluck Market, Inc. All Rights
+        Reserved.
+      </p>
+    </footer>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all elements with class 'interview-invite'
+        const inviteImages = document.querySelectorAll(".interview-invite");
+    
+        inviteImages.forEach((image) => {
+            image.addEventListener("click", function() {
+                // Check if the image is already expanded
+                if (image.classList.contains("expanded")) {
+                    collapseImage(image); // Collapse if it's already expanded
+                } else {
+                    // Add overlay background
+                    const overlay = document.createElement("div");
+                    overlay.classList.add("overlay");
+                    document.body.appendChild(overlay);
+    
+                    // Expand the image and scale to fit the screen
+                    scaleToFitScreen(image);
+    
+                    // Remove expansion when clicking on the overlay
+                    overlay.addEventListener("click", function() {
+                        collapseImage(image);
+                        overlay.remove(); // Remove the overlay when collapsing
+                    });
+                }
+            });
+        });
+    
+        // Function to scale the image to fit the screen
+        function scaleToFitScreen(image) {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const imageAspectRatio = image.naturalWidth / image.naturalHeight;
+    
+            // Calculate the new width and height for the image to fit within the screen
+            let newWidth, newHeight;
+    
+            if (screenWidth / screenHeight > imageAspectRatio) {
+                // Screen is wider than image aspect ratio, limit by height
+                newHeight = screenHeight * 0.9; // Use 90% of screen height
+                newWidth = newHeight * imageAspectRatio;
+            } else {
+                // Screen is narrower than image aspect ratio, limit by width
+                newWidth = screenWidth * 0.9; // Use 90% of screen width
+                newHeight = newWidth / imageAspectRatio;
+            }
+    
+            // Apply expanded class and set dynamic size
+            image.classList.add("expanded");
+            image.style.width = `${newWidth}px`;
+            image.style.height = `${newHeight}px`;
+            image.style.top = `50%`;
+            image.style.left = `50%`;
+            image.style.position = `fixed`;
+            image.style.zIndex = `1000`;
+            image.style.transform = `translate(-50%, -50%)`;
+        }
+    
+        // Function to collapse the image back to its original state
+        function collapseImage(image) {
+            // Remove the expanded class and reset inline styles
+            image.classList.remove("expanded");
+            image.style.width = "";
+            image.style.height = "";
+            image.style.top = "";
+            image.style.left = "";
+            image.style.position = "";
+            image.style.zIndex = "";
+            image.style.transform = "";
+        }
+    });
+    </script>
+    
+    
+    
+</html>
